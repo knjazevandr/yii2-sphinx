@@ -429,13 +429,7 @@ class Schema extends Object
             'float' => 'double',
         ];
         if (isset($typeMap[$column->type])) {
-            if ($column->type === 'bigint') {
-                return PHP_INT_SIZE == 8 ? 'integer' : 'string';
-            } elseif ($column->type === 'integer') {
-                return PHP_INT_SIZE == 4 ? 'string' : 'integer';
-            } else {
-                return $typeMap[$column->type];
-            }
+            return $typeMap[$column->type];
         } else {
             return 'string';
         }
